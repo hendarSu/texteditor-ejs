@@ -10,6 +10,7 @@ app.use(morgan('dev'));
 
 app.use(express.static('public'));
 app.use(express.static('bower_components'));
+app.use(express.static('node_modules'));
 
 app.use(express.json());
 app.use(express.urlencoded({
