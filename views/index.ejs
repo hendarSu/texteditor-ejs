@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Text Editor</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Create the editor container -->
+    <div id="editor"></div>
+</body>
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+// Inisialisasi Quill dengan container editor
+const quill = new Quill('#editor', {
+  theme: 'snow', // Gunakan tema "snow" untuk tampilan default Quill
+  modules: {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'], // Fitur teks kaya
+      ['image'], // Fitur penyisipan tautan dan gambar
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }], // Daftar terurut dan tidak terurut
+      ['blockquote', 'code-block'], // Kutipan dan blok kode
+      [{ 'align': [] }], // Penyusunan teks
+      ['clean'] // Hapus semua pemformatan
+    ]
+  }
+});
+
+// Menggunakan event listener untuk memantau perubahan di Quill
+quill.on('text-change', function() {
+  // Dapatkan HTML hasil dari Quill
+  const editorContent = document.querySelector('.ql-editor').innerHTML;
+  console.log(editorContent);
+});
+</script>
+
+</html>
